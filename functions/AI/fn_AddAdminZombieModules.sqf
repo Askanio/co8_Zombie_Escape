@@ -1,0 +1,115 @@
+private["_module_sitting"];
+
+	_module_sitting  = Zagor_VAR_AdminZombieModuleGroup createUnit ["RyanZM_ModuleAbilities", [0,0,0], [], 0, "NONE"]; 
+	_module_sitting setVariable ["Throwing", 1];
+	_module_sitting setVariable ["ThrowingTankDistance", 50];
+	_module_sitting setVariable ["ThrowingTankDistanceDemons", 100];
+	_module_sitting setVariable ["Roaming", 3];
+	_module_sitting setVariable ["Jumping", 1];		
+	_module_sitting setVariable ["Feeding", 1];
+	_module_sitting setVariable ["ThrowingCarAlarms", 1];
+	_module_sitting setVariable ["JumpingDemons", 1];
+	_module_sitting setVariable ["ThrowingTank", 1];
+	_module_sitting setVariable ["ThrowingDistance", 500];
+	_module_sitting setVariable ["ThrowingDemons", 1];
+	_module_sitting setVariable ["ThrowingDistanceDemons", 1000];
+	_module_sitting setVariable ["ThrowingTankDemons", 1];
+	_module_sitting setVariable [ "bis_fnc_initModules_disableAutoActivation", false, false ];
+
+	_module_sitting  = Zagor_VAR_AdminZombieModuleGroup createUnit ["RyanZM_ModuleInfection", [0,0,0], [], 0, "NONE"]; 
+	_module_sitting setVariable ["Uniform", 1];
+	_module_sitting setVariable ["InfectionTimer", 30];
+	_module_sitting setVariable ["Infection", 1];
+	_module_sitting setVariable [ "bis_fnc_initModules_disableAutoActivation", false, false ];
+
+	_module_sitting  = Zagor_VAR_AdminZombieModuleGroup createUnit ["RyanZM_ModuleInfected", [0,0,0], [], 0, "NONE"]; 
+	_module_sitting setVariable ["Antivirus", 300];
+	_module_sitting setVariable ["InfectedDeath", 1];
+	_module_sitting setVariable ["Immunity", "[]"];
+	_module_sitting setVariable ["InfectedChance", 50];
+	_module_sitting setVariable ["InfectedRate", 0.1];		
+	_module_sitting setVariable ["InfectedSymptoms", 1];
+	_module_sitting setVariable [ "bis_fnc_initModules_disableAutoActivation", false, false ];
+/*
+	_module_sitting  = Zagor_VAR_AdminZombieModuleGroup createUnit ["RyanZM_ModuleZombieDeletion", [0,0,0], [], 0, "NONE"]; 
+	_module_sitting setVariable ["DeletionDemons2", 1];
+	_module_sitting setVariable ["DeletionCheckTime", 30];
+	_module_sitting setVariable ["DeletionDemons", 1];
+	_module_sitting setVariable ["DeletionRadiusDemons", 1000];
+	_module_sitting setVariable ["DeletionRadius", 1000];		
+	_module_sitting setVariable ["Deletion", 2];
+	_module_sitting setVariable ["Deletion2", 1];
+	_module_sitting setVariable [ "bis_fnc_initModules_disableAutoActivation", false, false ];
+*/	
+	_module_sitting  = Zagor_VAR_AdminZombieModuleGroup createUnit ["RyanZM_ModuleSettings", [0,0,0], [], 0, "NONE"]; 
+	_module_sitting setVariable ["GlowingEyes", 1];
+	_module_sitting setVariable ["Headshots", 1];
+	_module_sitting setVariable ["ExplodingHeads", 1];
+	_module_sitting setVariable ["Invincibility", 1];
+	_module_sitting setVariable ["DetectionDistance", 50];		
+	_module_sitting setVariable ["ZombieScript", 1];
+	_module_sitting setVariable ["DeleteBodies", 1];
+	_module_sitting setVariable ["JumpingSounds", 1];
+	_module_sitting setVariable ["Sounds", 1];
+	_module_sitting setVariable ["Bleeding", 1];
+	_module_sitting setVariable ["StartingAnim", 1];
+	_module_sitting setVariable ["CivilianAttacks", 2];
+	_module_sitting setVariable [ "bis_fnc_initModules_disableAutoActivation", false, false ];
+	
+	_module_sitting  = Zagor_VAR_AdminZombieModuleGroup createUnit ["RyanZM_ModuleMovementSpeed", [0,0,0], [], 0, "NONE"]; 
+	_module_sitting setVariable ["CrawlerZombies", 1];
+	_module_sitting setVariable ["FastZombies", 1];
+	_module_sitting setVariable ["PlayerZombies", 1];
+	_module_sitting setVariable ["WalkerZombies", 1];
+	_module_sitting setVariable ["DemonZombies", 1];		
+	_module_sitting setVariable ["SpiderZombies", 1];
+	_module_sitting setVariable ["SlowZombies", 1];
+	_module_sitting setVariable ["MediumZombies", 1];
+	_module_sitting setVariable [ "bis_fnc_initModules_disableAutoActivation", false, false ];
+	
+	_module_sitting  = Zagor_VAR_AdminZombieModuleGroup createUnit ["RyanZM_ModuleCustomDifficulty", [0,0,0], [], 0, "NONE"]; 
+	_module_sitting setVariable ["KnockbackTank", 0.4];
+	_module_sitting setVariable ["DamageCar", 0.02];
+	_module_sitting setVariable ["Knockback", 1.5];
+	_module_sitting setVariable ["KnockbackCar", 1.5];
+	_module_sitting setVariable ["AttackSpeed", 0.8];		
+	_module_sitting setVariable ["DamageAir", 0.01];
+	_module_sitting setVariable ["AttackDistance", 2.35];
+	_module_sitting setVariable ["DamageTank", 0.002];
+	_module_sitting setVariable ["KnockbackAir", 1];
+	_module_sitting setVariable ["Damage", 0.15];
+	_module_sitting setVariable [ "bis_fnc_initModules_disableAutoActivation", false, false ];
+/*	
+	_module_sitting  = Zagor_VAR_AdminZombieModuleGroup createUnit ["RyanZM_ModuleLootSettings", [0,0,0], [], 0, "NONE"]; 
+	_module_sitting setVariable ["Itemsamountmin", 1];
+	_module_sitting setVariable ["WeaponsamountmaxSoldier", 1];
+	_module_sitting setVariable ["Magazines", []];
+	_module_sitting setVariable ["Itemschance", 25];
+	_module_sitting setVariable ["MagazinesamountmaxSoldier", 1];		
+	_module_sitting setVariable ["WeaponschanceSoldier", 0];
+	_module_sitting setVariable ["ItemsamountmaxSoldier", 1];
+	_module_sitting setVariable ["ItemschanceSoldier", 25];
+	_module_sitting setVariable ["Magazineschance", 25];
+	_module_sitting setVariable ["Weaponsamountmax", 1];
+	_module_sitting setVariable ["Weaponsamountmin", 1];
+	_module_sitting setVariable ["Weapons", []];
+	_module_sitting setVariable ["WeaponsamountminSoldier", 1];
+	_module_sitting setVariable ["WeaponsSoldier", []];
+	_module_sitting setVariable ["Magazinesamountmax", 1];
+	_module_sitting setVariable ["Items", []];
+	_module_sitting setVariable ["ItemsamountminSoldier", 1];
+	_module_sitting setVariable ["MagazinesSoldier", []];
+	_module_sitting setVariable ["MagazinesamountminSoldier", 1];
+	_module_sitting setVariable ["ItemsSoldier", []];
+	_module_sitting setVariable ["Itemsamountmax", 1];
+	_module_sitting setVariable ["Magazinesamountmin", 1];
+	_module_sitting setVariable ["MagazineschanceSoldier", 25];
+	_module_sitting setVariable ["Weaponschance", 0];	
+	_module_sitting setVariable [ "bis_fnc_initModules_disableAutoActivation", false, false ];
+*/
+	_module_sitting  = Zagor_VAR_AdminZombieModuleGroup createUnit ["RyanZM_ModuleZombieHealth", [0,0,0], [], 0, "NONE"]; 
+	_module_sitting setVariable ["DemonMaxHealth", 1];
+	_module_sitting setVariable ["ZombieMaxHealth", 1];
+	_module_sitting setVariable [ "bis_fnc_initModules_disableAutoActivation", false, false ];
+	
+	diag_log format["Warning! Created AdminZombieModules!"];
