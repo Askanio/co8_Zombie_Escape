@@ -5,11 +5,9 @@ class CfgFunctions
     class Common
     {
 		class BootstrapEscape {
-#ifndef Zagor_EDITOR
 			preInit = 0; // 1 to call the function upon mission start, before objects are initialized. Passed arguments are ["preInit"]
 			postInit = 1; // 1 to call the function upon mission start, after objects are initialized. Passed arguments are ["postInit"]
 			recompile = 0;
-#endif
 		};
 //		class RandomMarkerPos {};
 //		class GetSideColor {};
@@ -35,9 +33,7 @@ class CfgFunctions
 		//	postInit = 1;
 		};
 		class InitLocalPlayer {
-#ifndef Zagor_EDITOR
 			postInit = 0;
-#endif
 		};
 		class cleanupTerrain {};
 		class handleRating {};
@@ -231,20 +227,16 @@ class CfgFunctions
 	{
 		class Revive
 		{
-#ifndef Zagor_EDITOR
 			file = "Revive\functions\revive";
 			#include "..\Revive\functions\revive\revive.hpp"
-#endif
 		};
 	};
 	class ATHSC
 	{
 		class HSC
 		{
-#ifndef Zagor_EDITOR
 			file = "Revive\functions\HSC";
 			#include "..\Revive\functions\HSC\hsc.hpp"
-#endif
 		};
 	};
 	class ace
@@ -257,4 +249,15 @@ class CfgFunctions
 			class GroundHandler {};
 		};
 	};
+	/*
+	class MB
+	{
+		class Weather
+		{
+			class randomWeather2 {
+				file  = "functions\Weather\randomWeather2.sqf";
+			};
+		};
+	};
+	*/
 };

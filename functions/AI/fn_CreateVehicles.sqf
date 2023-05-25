@@ -1,7 +1,7 @@
 if (!isServer) exitWith {};
 
 waitUntil {time > 0};
-sleep 10;
+sleep 5;
 
 private["_vehicleTypes", "_players", "_meters", "_vehicle", "_pos", "_maxSize", "_square"]; //, "_backpack","_pistols","_magazin"];
 private["_distShow", "_distHide","_activeVillages","_currentVillageId","_countVillages","_divider"];

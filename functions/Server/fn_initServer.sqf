@@ -234,6 +234,7 @@ _startHeli setHitPointDamage ["hitEngine", 1.0];
 //		};
 
 // TEST
+/*
 private _pph = getpos _startHeli;
 private _pp = [(_pph select 0) - 4, (_pph select 1) - 4];
 private _obj = createVehicle ["Box_East_Wps_F", _pp, [], 0, "CAN_COLLIDE"];
@@ -242,7 +243,7 @@ private _obj = createVehicle ["Box_East_Wps_F", _pp, [], 0, "CAN_COLLIDE"];
         clearItemCargoGlobal _obj;
 		clearBackpackCargoGlobal _obj;
 _obj addItemCargoGlobal ["Laptop_closed", 1];
-
+*/
 
 _playerGroup = [] call Zagor_fnc_GetPlayerGroup;
 

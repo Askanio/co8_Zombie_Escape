@@ -19,12 +19,12 @@ if (isServer) then {
 				|| _x isKindOf 'Land_FuelStation_03_pump_F') then {
 				_x enableSimulation false; _x allowDamage false}
 			} forEach nearestObjects [thisTrigger,[],10]", ""]; 
-		
+		/*
 		_mrk = createMarker [format["%1_fuelpump", floor (random 100000)], _trg];
 		_mrk setMarkerShape "ICON";
 		_mrk setMarkerType "hd_dot";
 		_mrk setMarkerColor "ColorRed";	
-		/**/
+		*/
 	} foreach zagor_fuelPump_locations;
 	
 };
