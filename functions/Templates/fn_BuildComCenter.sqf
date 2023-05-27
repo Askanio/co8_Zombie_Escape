@@ -11,7 +11,7 @@ if (count _this > 3) then { _parkedVehicleClasses = _this select 3; } else { _pa
 
 [_centerPos,25] call zagor_fnc_cleanupTerrain;
 
-
+/*
 private _fnc_CreateVehicle = {
     private ["_className", "_relativePos", "_relativeDir", "_centerPos", "_rotateDir"];
     private ["_object", "_realPos", "_realDir"];
@@ -30,6 +30,7 @@ private _fnc_CreateVehicle = {
     //_object lock true;
     _object
 };
+*/
 
 private _objects = [];
 
@@ -339,7 +340,7 @@ if (count _parkedVehicleClasses > 0) then {
     _dir = 270;
     
     _vehicle = selectRandom _parkedVehicleClasses;
-    _obj = [_vehicle, _pos, _dir, _centerPos, _rotateDir] call Zagor_fnc_CreateTempleteVehicle;
+    _obj = [_vehicle, _pos, _dir, _centerPos, _rotateDir] call Zagor_fnc_CreateTempleteObject;
 	_objects pushBack _obj;
 	[_obj] call Zagor_fnc_AdjustVehicle;
 };

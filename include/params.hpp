@@ -172,7 +172,7 @@ class Zagor_Param_TimeOfDay
 		values[]={0,1};
 		texts[]={"Disabled","Enabled"};
 		default = 0;
-	};*/
+	};
 	class Zagor_Param_ReviveView
 	{
 		title="Unconscious View";
@@ -180,7 +180,7 @@ class Zagor_Param_TimeOfDay
 		texts[]={"First-/Third-Person","Hindsight Cam"};
 		default = 1;
 	};
-	/*class Zagor_Param_ExtractionSelection
+	class Zagor_Param_ExtractionSelection
 	{
 		title="Extraction Points";
 		values[]={0, 1, 2};

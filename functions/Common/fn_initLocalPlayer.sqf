@@ -16,11 +16,12 @@ sleep 0.5;
 	(findDisplay 46) displayAddEventHandler ["keyDown", "_this call zagor_fnc_KeyDown"];
 };
 
-
+/*
 AT_Revive_StaticRespawns = [];
 AT_Revive_enableRespawn = false;
 AT_Revive_clearedDistance = 0;
 AT_Revive_Camera = 1;
+*/
 
 [] call Zagor_fnc_addUserActions;
 
@@ -59,15 +60,17 @@ if (isMultiplayer) then {
 };
 
 waituntil{sleep 0.1;!isNil("Zagor_ParamsParsed")};
+/*
 AT_Revive_Camera = Zagor_Param_ReviveView;
 
 //If no ACE use ATR revive
+
 if (isClass(configFile >> "CfgPatches" >> "ACE_Medical")) then {
 	player setVariable ["ACE_Revive_isUnconscious", false, true];
 } else {
 	call ATR_FNC_ReviveInit;
 };
-
+*/
 
 setTerrainGrid Zagor_Param_Grass;
 
@@ -88,7 +91,7 @@ waituntil{sleep 0.1;(player getvariable["Zagor_PlayerInitializedServer",false])}
 
 diag_log format["Escape debug: %1 is now ready (clientside).", name player];
 
-
+/*
 [] spawn {
 	waituntil{sleep 0.5;!isNil("Zagor_EscapeHasStarted")};
 
@@ -96,6 +99,8 @@ diag_log format["Escape debug: %1 is now ready (clientside).", name player];
 	if ((isClass(configFile >> "CfgPatches" >> "ACE_Medical")) && !(ACE_MedicalServer)) then {systemChat "Player is running ACE on unsupported server! Please deactivate or gameplay could be servilely affected.";};
 	if (!(isClass(configFile >> "CfgPatches" >> "ACE_Medical")) && (ACE_MedicalServer)) then {systemChat "Server is running ACE! Please install the compatible version and reconnect to prevent gamebreaking issues.";};
 };
+*/
+
 
 //[] spawn {
 //	waituntil{sleep 0.5;Zagor_Task_Prison_Complete};
@@ -108,3 +113,11 @@ if(!isNil("CBA_fnc_addKeybind")) then {
 		["Zagor Earplugs", "toggle_earplugs_key", localize "STR_Zagor_initLocalPlayer_toggleEarplugs", {_this call Zagor_fnc_toggleEarplugs}, ""] call CBA_fnc_addKeybind;
 	};
 };
+
+/*
+switch (playerSide) do
+{
+	case west: { hint "You are BLUFOR"; };
+	case east: { hint "You are OPFOR"; };
+};
+*/

@@ -5,9 +5,11 @@ class CfgFunctions
     class Common
     {
 		class BootstrapEscape {
+//#ifndef Zagor_EDITOR
 			preInit = 0; // 1 to call the function upon mission start, before objects are initialized. Passed arguments are ["preInit"]
 			postInit = 1; // 1 to call the function upon mission start, after objects are initialized. Passed arguments are ["postInit"]
 			recompile = 0;
+//#endif
 		};
 //		class RandomMarkerPos {};
 //		class GetSideColor {};
@@ -33,7 +35,9 @@ class CfgFunctions
 		//	postInit = 1;
 		};
 		class InitLocalPlayer {
+//#ifndef Zagor_EDITOR
 			postInit = 0;
+//#endif
 		};
 		class cleanupTerrain {};
 		class handleRating {};
@@ -97,6 +101,7 @@ class CfgFunctions
 			class initPlayer {};
 			class UpdateZombie {};
 			class UpdateSitesZombie {};
+			class UpdateCloseZombie;
 //			class watchKnownPosition {};
 			class parameterInit {}; 
             class createComCenters {};
@@ -121,6 +126,7 @@ class CfgFunctions
 //			class RoadBlocks {};
 			class MissionFlow {};
 			class createStartpos {};
+			class CheckEscape {};
 		};
 		class Spawning
 		{
@@ -223,6 +229,7 @@ class CfgFunctions
 //			class GarrisonUnits {};
 		};
 	};
+/*
 	class ATR
 	{
 		class Revive
@@ -239,6 +246,7 @@ class CfgFunctions
 			#include "..\Revive\functions\HSC\hsc.hpp"
 		};
 	};
+*/	
 	class ace
 	{
 		class ace

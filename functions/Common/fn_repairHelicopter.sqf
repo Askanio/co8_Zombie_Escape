@@ -11,5 +11,7 @@ params ["_target", "_caller", "_actionId", "_arguments"];
 _caller playActionNow "medicstartup";
 sleep 3;
 _caller playActionNow "medicstop";
+_caller removeItem "Laptop_closed";
+
 //execVM "Repair.sqf"
 //_target setHit [getText(configFile >> "cfgVehicles" >> (TypeOf _target) >> "HitPoints" >> "engine"),0.5];

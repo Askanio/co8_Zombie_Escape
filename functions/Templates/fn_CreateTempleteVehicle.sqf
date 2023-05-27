@@ -13,3 +13,4 @@
 	//_object setPos _realPos;
     _object setDir _realDir;
     _object
+	

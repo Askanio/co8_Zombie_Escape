@@ -93,6 +93,7 @@ while {count _positions < Zagor_MedicalSiteCount} do {
             //A3E_fnc_AmmoDepot4,
             //A3E_fnc_AmmoDepot5
         ];
+	Zagor_VAR_SitesPoint pushBack [2, _x, objNull];
 } foreach _positions;
 
 Zagor_VAR_Escape_MedicalSitePositions = _positions;

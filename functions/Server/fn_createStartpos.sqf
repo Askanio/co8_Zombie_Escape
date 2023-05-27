@@ -21,17 +21,10 @@ for [{_i = 0}, {_i < (6)}, {_i = _i + 1}] do {
 };
 //_startHeli setHit [getText(configFile >> "cfgVehicles" >> (TypeOf _startHeli) >> "HitPoints" >> "engine"),1];
 //_startHeli setHit ["motor", 1];
-_startHeli setHitPointDamage ["hitEngine", 0.9];
 //_startHeli setDammage 0.7;
+_startHeli setHitPointDamage ["hitEngine", 0.9];
 
-//if(isserver) then {
-	[Zagor_StartPos,25] call Zagor_fnc_cleanupTerrain;
-	
-	_pos = [Zagor_StartPos,Zagor_StartPos vectorAdd [random 2.0 - 7, random 2.0 - 7,0],_fenceRotateDir] call Zagor_fnc_rotatePosition;
-	_startHeli setdir ((getdir _startHeli) + _fenceRotateDir);
-	_startHeli setPosATL _pos;
-//};
-//[Zagor_StartPos, _fenceRotateDir, _startHeli] remoteExec ["zagor_fnc_BuildStartPoint", 0, true];
+[Zagor_StartPos, _fenceRotateDir, _startHeli] remoteExec ["zagor_fnc_BuildStartPoint", 0, true];
 
 Zagor_StartPointIsCreated = true;
 publicVariable "Zagor_StartPointIsCreated";

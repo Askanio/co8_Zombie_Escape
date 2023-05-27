@@ -63,6 +63,8 @@ private _instanceNo = 0;
 		_instanceNo = _instanceNo + 1;
 		_createdCount = _createdCount + 1;
 		_comCenPositions pushBack _pos;
+		
+		Zagor_VAR_SitesPoint pushBack [4, _pos, objNull];
 	};
 	if (_createdCount >= Zagor_ComCenterCount) exitWith {};
 } forEach _shuffledComCenterMarkers;

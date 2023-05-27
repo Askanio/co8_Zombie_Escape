@@ -38,7 +38,7 @@ while {true} do {
 		private["_group", "_count"];
 		
 		private _blacklistPositions = [];
-		{ _blacklistPositions pushback [getPos _x, 30];	} forEach _players;	
+		{ _blacklistPositions pushback [getPos _x, 50];	} forEach _players;	
 		
 		// Delete far away zombie
 		_count = (count _zombies) - 1;

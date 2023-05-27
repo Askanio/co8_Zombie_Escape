@@ -14,9 +14,9 @@ if(isServer) then {
 	_trigger setTriggerArea[0, 0, 0, false];
 	_trigger setTriggerActivation["NONE", "PRESENT", false];
 	_trigger setTriggerTimeout [3, 3, 3, true];
-	_trigger setTriggerStatements["zagor_var_Escape_MissionComplete && !zagor_var_Escape_SearchLeader_civilianReporting && !zagor_var_Escape_AllPlayersDead", """end2"" call Zagor_fnc_endMissionServer;", ""];
+	_trigger setTriggerStatements["zagor_var_Escape_MissionComplete && !zagor_var_Escape_AllPlayersDead", """end2"" call Zagor_fnc_endMissionServer;", ""]; // && !zagor_var_Escape_SearchLeader_civilianReporting 
 	
-	
+	/*
 	//Mission win (but failed by killing civilians)
 	_trigger = createTrigger["EmptyDetector", [0,0,0], false];
 	_trigger setTriggerInterval 2;
@@ -24,6 +24,7 @@ if(isServer) then {
 	_trigger setTriggerActivation["NONE", "PRESENT", false];
 	_trigger setTriggerTimeout [3, 3, 3, true];
 	_trigger setTriggerStatements["zagor_var_Escape_MissionComplete && zagor_var_Escape_SearchLeader_civilianReporting && !zagor_var_Escape_AllPlayersDead", """end4"" call Zagor_fnc_endMissionServer;", ""];
+	*/
 	
 	//Mission failed by MIA
 	_trigger = createTrigger["EmptyDetector", [0,0,0], false];
@@ -41,6 +42,7 @@ if(isServer) then {
 	_trigger setTriggerTimeout [2, 2, 2, true];
 	_trigger setTriggerStatements["zagor_var_Escape_AllPlayersDead", """end1"" call Zagor_fnc_endMissionServer;", ""];
 	
+	/*
 	_trigger = createTrigger["EmptyDetector", [0,0,0], false];
 	_trigger setTriggerInterval 2;
 	_trigger setTriggerArea[0, 0, 0, false];
@@ -55,6 +57,7 @@ if(isServer) then {
 	
 	};
 	_trigger setTriggerStatements["Zagor_EscapeHasStarted && ([] call Zagor_fnc_InlineEverybodyUnconscious)", "missionNamespace setvariable [""zagor_var_Escape_AllPlayersDead"",true,true];[] spawn Zagor_FNC_FailTasks;", ""];
+	*/
 	
 	_trigger = createTrigger["EmptyDetector", [0,0,0], false];
 	_trigger setTriggerInterval 2;

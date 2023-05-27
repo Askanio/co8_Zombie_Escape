@@ -5,6 +5,8 @@ if(isNil("Zagor_var_commonLibInitialized")) then {
 	call compile preprocessFileLineNumbers "Scripts\DRN\CommonLib\CommonLib.sqf";
 };
 
+// saving disabled, does not autosave
+enableSaving [false, false];
 
 //Parse the parameters
 call Zagor_fnc_parameterInit;
@@ -25,7 +27,9 @@ if(!isNil("Zagor_Param_Debug")) then {
 };
 publicVariable "Zagor_Debug";
 
+
 //ACE Revive
+/*
 AT_Revive_Camera = Zagor_Param_ReviveView; //Needs to be stored on server now
 ACE_MedicalServer = false;
 if (isClass(configFile >> "CfgPatches" >> "ACE_Medical")) then {
@@ -33,7 +37,7 @@ if (isClass(configFile >> "CfgPatches" >> "ACE_Medical")) then {
 	["ace_unconscious", {params["_unit", "_isDown"]; [_unit,_isDown] spawn ACE_fnc_HandleUnconscious;}] call CBA_fnc_addEventHandler;
 };
 publicVariable "ACE_MedicalServer";
-
+*/
 
 
 //Load Statistics
@@ -57,8 +61,8 @@ _enemySpawnDistance = (Zagor_Param_EnemySpawnDistance);
 publicVariable "Zagor_VAR_Flag_Ind";
 
 // Developer Variables
-
-
+//diag_log format["Zagor_VAR_Side_Blufor: '%1'", Zagor_VAR_Side_Blufor_Str];
+//diag_log format["Zagor_VAR_Side_Opfor: '%1'", Zagor_VAR_Side_Opfor_Str];
 
 createCenter Zagor_VAR_Side_Opfor;
 createCenter Zagor_VAR_Side_Ind;
@@ -182,7 +186,7 @@ private	_center = createCenter sideLogic;
 Zagor_VAR_AdminZombieModuleGroup = createGroup _center;
 Zagor_VAR_Villages = []; // [x,y], size
 //Zagor_VAR_ActiveZombieModule = []; // [villageId]
-Zagor_VAR_SitesPoint = []; // [type, point, group] type: 1 - small medical, 2 - 
+Zagor_VAR_SitesPoint = []; // [type, point, group] type: 1 - small medical, 2 - medical, 3 - , 4 - comCenter
 Zagor_VAR_SitesPointObjects = []; // [[objects]]
 Zagor_VAR_SitesPointGuid = 0; // Global GUID for all sites
 
@@ -206,6 +210,7 @@ private _startHeli = [] call Zagor_fnc_createStartpos;
 //Wait for players to actually arrive ingame. This may be a long time if server is set to persistent
 waituntil{uisleep 1; count([] call Zagor_FNC_GetPlayers)>0};
 
+// TEST
 /*
 _startHeli setFuel (random 0.3 + 0.2);
 _startHeli setVehicleAmmo 0;
@@ -224,14 +229,7 @@ _startHeli setHit [getText(configFile >> "cfgVehicles" >> (TypeOf _startHeli) >>
 _startHeli setHit ["motor", 1];
 _startHeli setHitPointDamage ["hitEngine", 1.0];
 */
-//private _ppp = [] call Zagor_fnc_GetPlayers;
-//	private _itemsPlayer = items (_ppp select 0);//isKindOf
-//	{
-//		diag_log format["Item: '%1'", _x];
-//	} foreach _itemsPlayer;
-//		if (_itemsPlayer findIf { _x == "Laptop_closed" } > -1) then {
-//			_return = true;
-//		};
+
 
 // TEST
 /*
@@ -244,6 +242,7 @@ private _obj = createVehicle ["Box_East_Wps_F", _pp, [], 0, "CAN_COLLIDE"];
 		clearBackpackCargoGlobal _obj;
 _obj addItemCargoGlobal ["Laptop_closed", 1];
 */
+
 
 _playerGroup = [] call Zagor_fnc_GetPlayerGroup;
 
@@ -288,13 +287,19 @@ Zagor_VAR_SmallMedicalSitesCreated = false;
 };
 
 [] spawn Zagor_fnc_UpdateSitesZombie;
+[] spawn Zagor_fnc_UpdateCloseZombie;
 
+[_startHeli, _startHeli, _startHeli] spawn Zagor_fnc_CheckEscape;
 
 // TEST
-//private _posXY = Zagor_StartPos vectoradd [100, 0];
-//[_posXY,25] call Zagor_fnc_cleanupTerrain;
-//[_posXY] call Zagor_fnc_MedicalSite;
-
+/*
+private _posXY = Zagor_StartPos vectoradd [100, 0];
+[_posXY,25] call Zagor_fnc_cleanupTerrain;
+[_posXY] call Zagor_fnc_MedicalSite;
+private _posXY = Zagor_StartPos vectoradd [0, 100];
+[_posXY,25] call Zagor_fnc_cleanupTerrain;
+[_posXY, 0, zagor_arr_ComCenStaticWeapons, zagor_arr_ComCenParkedVehicles] call zagor_fnc_BuildComCenter;
+*/
 
 if(isNil("Zagor_EscapeHasStarted")) then {
 	Zagor_EscapeHasStarted = true;

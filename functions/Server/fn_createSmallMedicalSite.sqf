@@ -98,5 +98,5 @@ while {count _positions < _smallMedicalSiteCount} do {
 //	if (_blah == 1) then {
 //	[_x] call A3E_fnc_MortarSite2;
 //	};
-Zagor_VAR_SitesPoint = Zagor_VAR_SitesPoint + [[1, _x, objNull]];
+Zagor_VAR_SitesPoint pushBack [1, _x, objNull];
 } foreach _positions;

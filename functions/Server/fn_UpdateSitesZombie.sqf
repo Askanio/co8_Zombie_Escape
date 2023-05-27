@@ -1,13 +1,14 @@
 if (!isServer) exitWith {};
 
 waitUntil {time > 0 && Zagor_VAR_SmallMedicalSitesCreated && Zagor_VAR_MedicalSitesCreated};
-sleep 10;
+sleep 5;
 
 private _distShow = 500;
 private _distHide = 600;
 
 private _zombies = []; // id, [zombieRef, alive, siteId]
 private _countSites = (count Zagor_VAR_SitesPoint) - 1;
+diag_log format["Sites: '%1'", _countSites];
 
 private _zombiesCoefficient = switch Zagor_Param_ZombiesQuantity do
 {
@@ -82,6 +83,8 @@ while {true} do {
 				private _pos = _site select 1;
 				private _group = _site select 2;
 				private _meters = _x distance2D _pos;
+				//diag_log format["Sites Pos: '%1'", _pos];
+				//diag_log format["Sites Meters: '%1'", _meters];
 				if (_meters < _distShow) then {
 					private _additionalZombies = 0;
 					private _maxCountZombie = 0;
@@ -116,7 +119,7 @@ while {true} do {
 							private["_newZombie"];
 							private _blah = floor(random 2);//returns 0 or 1
 							if (_blah == 0) then {
-								_newZombie = "RyanZombie" + str (floor(random 17) + 15) + _zombieTypes;
+								_newZombie = "RyanZombie" + str (floor(random 17) + 15) + selectRandom _zombieTypes;
 							};
 							if (_blah == 1) then {
 								_newZombie = selectRandom zagor_arr_Escape_Zombie_Soldier;
@@ -138,7 +141,7 @@ while {true} do {
 		
 
 	};
-	//diag_log format["Zombies: '%1', Groups: %2", count _zombies, count (_groups select { (_x select 0) == true })];
+	diag_log format["Sites Zombies: '%1'", count _zombies];
 
 	sleep 19;
 };

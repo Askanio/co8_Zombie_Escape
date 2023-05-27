@@ -9,8 +9,8 @@ private ["_enemyFrequency"];
 
 _enemyFrequency = _this select 0;
 
-Zagor_VAR_Side_Blufor = east;
-Zagor_VAR_Side_Opfor = west;
+Zagor_VAR_Side_Blufor = west; // east
+Zagor_VAR_Side_Opfor = east; // west
 Zagor_VAR_Side_Ind = resistance;
 
 Zagor_VAR_Flag_Opfor = "\A3\Data_F\Flags\Flag_NATO_CO.paa";

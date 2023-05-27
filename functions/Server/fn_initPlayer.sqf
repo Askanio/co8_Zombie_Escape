@@ -62,7 +62,7 @@ _player setvariable["Zagor_PlayerInitializedServer",true,true];
 
 waituntil{!isNil("Zagor_EscapeHasStarted")};
 
-//[_player, false] remoteExec ["setCaptive", _player, false];
+[_player, false] remoteExec ["setCaptive", _player, false];
 
 
 
