@@ -7,6 +7,8 @@ clearBackpackCargoGlobal _vehicle;
 clearItemCargoGlobal _vehicle;
 clearWeaponCargoGlobal _vehicle;
 clearMagazineCargoGlobal _vehicle;
+_vehicle setVehicleAmmo random 0.2;
+//_sarmor setdamage random [0.25, 0.5, 0.9];
 if (random 100 < 5) then {_vehicle addItemCargoGlobal ["ItemMap", 1];};
 if (random 100 < 5) then {_vehicle addItemCargoGlobal ["ItemCompass", 1];};
 if (random 100 < 5) then {_vehicle addItemCargoGlobal ["ItemWatch", 1];};

@@ -32,14 +32,14 @@ class Zagor_Param_ZombiesQuantity
 		livechanges = 1;
 		default = 2;
 	};
-	class Zagor_Param_EnemySpawnDistance
+	/*	class Zagor_Param_EnemySpawnDistance
 	{
 		title="Enemy Spawn Distance";
 		values[]={500,800,1200};
 		texts[]={"Short (better performance, spawn in view possible)", "Medium", "Far (for good rigs)"};
 		default = 800;
 	};	
-	/*	class Zagor_Param_EnemyGroupSize
+	class Zagor_Param_EnemyGroupSize
 	{
 		title="Zombies quantity";
 		values[]={2,4,6,8,-1,-2,-3};
@@ -74,7 +74,7 @@ class Zagor_Param_TimeOfDay
 	    title="Time Of Day";
 		values[]={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26};
 		texts[]={"00:00","01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00","Random","Daytime","Nighttime"};
-		default = 8;
+		default = 6; //8;
 		//function = "Zagor_fnc_paramDaytime"; // (Optional) Function called when player joins, selected value is passed as an argument
 	};
 	class Zagor_Param_TimeMultiplier	
@@ -84,35 +84,41 @@ class Zagor_Param_TimeOfDay
 		texts[]={"1:1 (Normal)","1:6 (Day = 4 Hours)","1:12 (Day = 2 Hours)","1:24 (Day = 1 Hour)","1:36 (Day = 40 Minutes)"};
 		livechanges = 1;
 		code = "if(isserver) then {setTimeMultiplier _this;};";
-		default = 6;
+		default = 12; //6
+	};
+	class Zagor_Param_DynamicWeather {
+		title="Dynamic Weather";
+		values[] = {0,1};
+		texts[] = {"Constant","Random"};
+		default = 1;
 	};
 	class Zagor_Param_WeatherOvercast
 	{
 		title="Cloud Cover";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
 		texts[] = {"Randomly picks one of the below values (weighted towards low cloud cover for a better gameplay experience)","No Clouds","10%","20%","30%","40%","50% (Minimum needed for rain to appear)","60%","70%","80%","90%","100%"};
-		default = -1;
+		default = 9; //-1;
 	};
 	class Zagor_Param_WeatherFog
 	{
 		title="Fog Density";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
 		texts[] = {"Randomly picks one of the below values (heavily weighted towards no fog for a better gameplay experience)","No Fog","10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"};
-		default = -1;
+		default = 7; //-1;
 	};
 	class Zagor_Param_WeatherWind
 	{
 		title="Wind";
 		values[] = {-1,1,2,3,4,5,6,7,8,9,10,11,12,13,14};
 		texts[] = {"Randomly picks one of the below values (except last 4 and heavily weighted towards low wind for a better gameplay experience)","No Wind","Lvl 1 Wind","Lvl 2 Wind","Lvl 3 Wind (Start to see the effects on smoke around here)","Lvl 4 Wind","Lvl 5 Wind (Smoke grenades are less effective)","Lvl 6 Wind","Lvl 7 (Smoke Grenades are useless at this point)","Lvl 8 Wind","Lvl 9 Wind","Lvl 10 Wind (Game wasn't designed for wind this fast at this point.  Doesn't affect framerate.)","Lvl 11 Wind","Lvl 1337 Wind","Lvl 9001 Wind"};
-		default = -1;
+		default = 10; //-1;
 	};
 	class Zagor_Param_WeatherRain
 	{
 		title="Rain Density (Cloud Cover must be at least 50%)";
 		values[] = {-1,1,2,3,4,5,6,7,8,9,10,11};
 		texts[] = {"Randomly picks one of the below values","No Rain","10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"};
-		default = -1;
+		default = 8; //-1;
 	};
 	class Zagor_Param_Grass
 	{	

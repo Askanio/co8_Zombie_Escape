@@ -2,42 +2,19 @@ Set overviewPicture in description.ext
 Create new pictures: escape_banner.paa, icon_noplayer_ca.paa, leaflet.paa
 
 
-Переделать использование параметров
-Zagor_Param_EnemySpawnDistance
-
-
-Renamed
-A3E_FenceIsCreated -> Zagor_StartPointIsCreated
-
-
-
-
 Will rename objects:
 fn_RevealPOI.sqf
 
 
 
-Add userAction to A3E_fnc_addUserActions and uncomment func here fn_initLocalPlayer.sqf
+Finish fn_initServer (46)
 
 
-Доделать fn_initServer (46)
-
-
-
-Поправить скрипты:
-fn_createComCenters.sqf
-Добавить свои сюрпризы: EscapeSurprises.sqf
+Add my surprises: EscapeSurprises.sqf
 fn_intServer (209)
 
 
 
-Раскомментить в fn_createComCenters.sqf создание BuildcomCenter и настроить их
-
-Доработать статистику
-
-Venchiles
-
-
-Просмотреть и переработать 
+Review 
 Scripts\Escape\Functions.sqf
 

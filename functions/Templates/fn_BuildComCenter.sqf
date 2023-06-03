@@ -33,6 +33,7 @@ private _fnc_CreateVehicle = {
 */
 
 private _objects = [];
+private _vehicles = [];
 
 /// Bagfence
 
@@ -333,7 +334,7 @@ if (count _parkedVehicleClasses > 0) then {
     
     _vehicle = selectRandom _parkedVehicleClasses;
     _obj = [_vehicle, _pos, _dir, _centerPos, _rotateDir] call Zagor_fnc_CreateTempleteVehicle;
-	_objects pushBack _obj;
+	_vehicles pushBack _obj;
 	[_obj] call Zagor_fnc_AdjustVehicle;
 
     _pos = [11.5, 6.5];
@@ -341,7 +342,7 @@ if (count _parkedVehicleClasses > 0) then {
     
     _vehicle = selectRandom _parkedVehicleClasses;
     _obj = [_vehicle, _pos, _dir, _centerPos, _rotateDir] call Zagor_fnc_CreateTempleteObject;
-	_objects pushBack _obj;
+	_vehicles pushBack _obj;
 	[_obj] call Zagor_fnc_AdjustVehicle;
 };
 
@@ -349,3 +350,5 @@ private _id = Zagor_VAR_SitesPointGuid;
 Zagor_VAR_SitesPointGuid = Zagor_VAR_SitesPointGuid + 1;
 Zagor_VAR_SitesPointObjects set [_id, _objects];
 [_id, _centerPos] call Zagor_fnc_CreateSiteTrigger;
+
+_vehicles

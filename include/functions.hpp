@@ -108,7 +108,8 @@ class CfgFunctions
 //            class createMotorPools {};
 //            class createAmmoDepots {};
 			class createMedicalSites {};
-//			class createMortarSites {};
+			class CreateRadioactiveZone {};
+			class CreateRadioactiveAccident {};
 			class createSmallMedicalSite {};
 			class createLocationMarker {};
 			class UpdateLocationMarker {};
@@ -119,7 +120,6 @@ class CfgFunctions
 //			class runExtractionCar {};
 //			class runExtractionHeli {};
 //			class firedNearExtraction {};
-			class weather {};
 //			class FindSpawnRoad {};
 			class EndMissionServer {};
 //			class SelectExtractionZone {};
@@ -200,6 +200,15 @@ class CfgFunctions
 //			class SearchLeaderRadio {};
 //			class CreateKnownPosition {};
 			
+		};
+		class Weather
+		{
+			class weather {};
+			class SetFog{};
+			class SetLightnings{};
+			class SetOvercast{};
+			class SetRain{};
+			class SetWind {};
 		};
 	};
 	class drn

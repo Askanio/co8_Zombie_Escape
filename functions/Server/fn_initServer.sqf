@@ -53,7 +53,7 @@ publicVariable "ACE_MedicalServer";
 //private ["_villagePatrolSpawnArea","_EnemyCount","_enemyMinSkill", "_enemyMaxSkill", "_searchChopperSearchTimeMin", "_searchChopperRefuelTimeMin", "_enemySpawnDistance", "_playerGroup", "_enemyFrequency", "_scriptHandle"];
 
 //_enemyFrequency = (Zagor_Param_EnemyFrequency);
-_enemySpawnDistance = (Zagor_Param_EnemySpawnDistance);
+//_enemySpawnDistance = (Zagor_Param_EnemySpawnDistance);
 
 [0] call compile preprocessFileLineNumbers "Units\UnitClasses.sqf";
 
@@ -86,7 +86,7 @@ Zagor_VAR_Side_Opfor setFriend [Zagor_VAR_Side_Blufor, 0];
 
 
 
-[] spawn Zagor_fnc_weather;
+[true] spawn Zagor_fnc_weather;
 
 private ["_hour","_date"];
 _hour = Zagor_Param_TimeOfDay;
@@ -203,7 +203,6 @@ private _startHeli = [] call Zagor_fnc_createStartpos;
 //[] call Zagor_fnc_AddAdminZombieModules;
 [] spawn Zagor_fnc_UpdateZombie;
 //[] spawn Zagor_fnc_UpdateZombieModule;
-[] spawn Zagor_fnc_CreateVehicles;
 //[true] call drn_fnc_InitAquaticPatrolMarkers; 
 
 
@@ -253,17 +252,21 @@ _playerGroup = [] call Zagor_fnc_GetPlayerGroup;
 Zagor_VAR_MedicalSitesCreated = false;
 Zagor_VAR_SmallMedicalSitesCreated = false;
 
-// Initialize communication centers
-[] call Zagor_fnc_createComCenters;
+private _vehicles = [];
+private _initVehicles = [];
 
+// Initialize communication centers
+_initVehicles = [] call Zagor_fnc_createComCenters;
+_vehicles = _vehicles + _initVehicles;
 
 //Spawn Small Medical Sites
-[] spawn {
+//[] spawn {
 
 	// Initialize Medical Sites
 	private _bannedPositions = + Zagor_VAR_Escape_communicationCenterPositions + [Zagor_StartPos, getMarkerPos "drn_insurgentAirfieldMarker"];
 	Zagor_VAR_Escape_MedicalSitePositions = _bannedPositions call drn_fnc_Escape_MedicalSitePositions;
-	[] call Zagor_fnc_createMedicalSites;
+	_initVehicles = [] call Zagor_fnc_createMedicalSites;
+	_vehicles = _vehicles + _initVehicles;
 	Zagor_VAR_MedicalSitesCreated = true;
 	publicVariable "Zagor_VAR_MedicalSitesCreated";
 
@@ -275,10 +278,13 @@ Zagor_VAR_SmallMedicalSitesCreated = false;
 		[_pos] call Zagor_fnc_crashSite;
 	};
 	
+	// Initialize Small Medical Sites
 	[] call Zagor_fnc_createSmallMedicalSite;
 	Zagor_VAR_SmallMedicalSitesCreated = true;
 	publicVariable "Zagor_VAR_SmallMedicalSitesCreated";
-};
+//};
+
+[_vehicles] spawn Zagor_fnc_CreateVehicles;
 
 //Start local and remote statistic tracking
 [] spawn {
@@ -288,11 +294,19 @@ Zagor_VAR_SmallMedicalSitesCreated = false;
 
 [] spawn Zagor_fnc_UpdateSitesZombie;
 [] spawn Zagor_fnc_UpdateCloseZombie;
+[] spawn Zagor_fnc_CreateRadioactiveAccident;
 
+// TODO: add 2 heli (2 and 3 position)
 [_startHeli, _startHeli, _startHeli] spawn Zagor_fnc_CheckEscape;
+
 
 // TEST
 /*
+private _posXY = Zagor_StartPos vectoradd [100, 100];
+[_posXY,25] call Zagor_fnc_cleanupTerrain;
+private _box = createVehicle ["B_T_Truck_01_fuel_F", _posXY, [], 0, "CAN_COLLIDE"];
+[_box,30,0.1,"H_PilotHelmetFighter_B","MineDetector"] call Zagor_fnc_CreateRadioactiveZone;
+
 private _posXY = Zagor_StartPos vectoradd [100, 0];
 [_posXY,25] call Zagor_fnc_cleanupTerrain;
 [_posXY] call Zagor_fnc_MedicalSite;
@@ -301,9 +315,34 @@ private _posXY = Zagor_StartPos vectoradd [0, 100];
 [_posXY, 0, zagor_arr_ComCenStaticWeapons, zagor_arr_ComCenParkedVehicles] call zagor_fnc_BuildComCenter;
 */
 
-if(isNil("Zagor_EscapeHasStarted")) then {
-	Zagor_EscapeHasStarted = true;
-	publicVariable "Zagor_EscapeHasStarted";
+
+// Start thread that waits for escape to start
+[] spawn {
+	sleep 5;
+	
+	while {isNil("Zagor_EscapeHasStarted")} do {
+		sleep 1;
+		// If any member of the group is to far away from fence, then escape has started
+		{
+			if(_x getvariable ["Zagor_PlayerInitializedServer",false]) then {
+				if ((_x distance Zagor_StartPos) > 15 && (_x distance Zagor_StartPos) < 100) exitWith {
+					Zagor_EscapeHasStarted = true;
+					publicVariable "Zagor_EscapeHasStarted";
+				};
+				// If any player have picked up a weapon, escape has started
+				if (count weapons _x > 0) exitWith {
+					Zagor_EscapeHasStarted = true;
+					publicVariable "Zagor_EscapeHasStarted";
+				};
+			};
+		} foreach call Zagor_FNC_GetPlayers;
+	};
+	
+	// ESCAPE HAS STARTED
+	//{
+	//	[[[_x], {(_this select 0) setCaptive false;}], "BIS_fnc_spawn", _x, false] call BIS_fnc_MP;
+	//} foreach call Zagor_FNC_GetPlayers;
+   diag_log "Server: Escape has started.";
 };
 
 

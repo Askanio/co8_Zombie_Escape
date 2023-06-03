@@ -19,6 +19,7 @@ for [{_i = 0}, {_i < (6)}, {_i = _i + 1}] do {
 	_startHeli addWeaponCargoGlobal[(_weapon select 0),1];
 	_startHeli addMagazineCargoGlobal[(_weapon select 1),3];
 };
+//_startHeli addWeaponCargoGlobal["MineDetector",1];
 //_startHeli setHit [getText(configFile >> "cfgVehicles" >> (TypeOf _startHeli) >> "HitPoints" >> "engine"),1];
 //_startHeli setHit ["motor", 1];
 //_startHeli setDammage 0.7;

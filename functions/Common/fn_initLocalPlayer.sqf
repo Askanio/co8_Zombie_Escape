@@ -91,6 +91,18 @@ waituntil{sleep 0.1;(player getvariable["Zagor_PlayerInitializedServer",false])}
 
 diag_log format["Escape debug: %1 is now ready (clientside).", name player];
 
+
+player addEventHandler["Respawn", {
+	removeAllAssignedItems player;
+	removeAllWeapons player;
+	removeAllItems player;
+	removeBackpack player;
+	removeVest player;
+	removeHeadgear player;
+	removeGoggles player;
+}];
+
+
 /*
 [] spawn {
 	waituntil{sleep 0.5;!isNil("Zagor_EscapeHasStarted")};
@@ -121,3 +133,32 @@ switch (playerSide) do
 	case east: { hint "You are OPFOR"; };
 };
 */
+
+// begin AL_radiation
+execVM "Scripts\AL_radiation\al_ini_fnc.sqf";
+[] spawn {
+	waitUntil {!isNil "glowindark"};
+
+	if (glowindark) then 
+	{
+		player setVariable ["glowing_player",false,true];
+		player setObjectMaterialglobal [0,"\a3\data_f\default.rvmat"]; 
+		(backpackContainer player) setObjectMaterialglobal [0,"\a3\data_f\default.rvmat"];			
+		while {!isNull player} do
+		{
+			waitUntil {alive player};
+			if (sunOrMoon==0) then 
+			{	
+				waitUntil {player getVariable "glowing_player"};
+				player setObjectMaterialglobal [0, "a3\characters_f_bootcamp\common\data\vrarmoremmisive.rvmat"]; 
+				(backpackContainer player) setObjectMaterialglobal [0, "a3\characters_f_bootcamp\common\data\vrarmoremmisive.rvmat"];
+				[[player],"Scripts\AL_radiation\reveal_target.sqf"] remoteExec ["execVM"];
+				waitUntil {!(player getVariable "glowing_player")};
+				sleep timetoglow;
+				player setObjectMaterialglobal [0,"\a3\data_f\default.rvmat"]; 
+				(backpackContainer player) setObjectMaterialglobal [0,"\a3\data_f\default.rvmat"];
+			} else {sleep 60};
+		};
+	};
+};
+// end AL_radiation

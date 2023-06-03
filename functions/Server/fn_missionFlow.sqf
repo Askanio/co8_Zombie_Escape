@@ -42,7 +42,7 @@ if(isServer) then {
 	_trigger setTriggerTimeout [2, 2, 2, true];
 	_trigger setTriggerStatements["zagor_var_Escape_AllPlayersDead", """end1"" call Zagor_fnc_endMissionServer;", ""];
 	
-	/*
+
 	_trigger = createTrigger["EmptyDetector", [0,0,0], false];
 	_trigger setTriggerInterval 2;
 	_trigger setTriggerArea[0, 0, 0, false];
@@ -50,14 +50,13 @@ if(isServer) then {
 	_trigger setTriggerTimeout [0, 0, 0, false];
 	Zagor_fnc_InlineEverybodyUnconscious = {
 		private _return = 	(
-								((([] call Zagor_fnc_GetPlayers) findIf {!(_x getVariable ["AT_Revive_isUnconscious",false]);}) == -1) 
-							OR 	((([] call Zagor_fnc_GetPlayers) findIf {!(_x getVariable ["ACE_Revive_isUnconscious",false]);}) == -1)
+								((([] call Zagor_fnc_GetPlayers) findIf { alive _x;}) == -1) 
 							);
 		_return;
 	
-	};
+	};	
 	_trigger setTriggerStatements["Zagor_EscapeHasStarted && ([] call Zagor_fnc_InlineEverybodyUnconscious)", "missionNamespace setvariable [""zagor_var_Escape_AllPlayersDead"",true,true];[] spawn Zagor_FNC_FailTasks;", ""];
-	*/
+
 	
 	_trigger = createTrigger["EmptyDetector", [0,0,0], false];
 	_trigger setTriggerInterval 2;

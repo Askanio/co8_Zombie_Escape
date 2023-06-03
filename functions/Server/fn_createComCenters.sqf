@@ -24,6 +24,7 @@ while {(count _comCenterMarkers) > 0} do {
 // iterate over the set of all potential commcenter markers and make commCenters at no more than Zagor_ComCenterCount of them.
 //
 // This ensures that the Comm Centres are never any less than Zagor_MinComCenterDistance from each other or the starting point.
+private _vehicles = [];
 private _createdCount = 0;
 private _comCenPositions = [];
 private _instanceNo = 0;
@@ -42,7 +43,7 @@ private _instanceNo = 0;
 
 	if _ok then {
 		// pick one of the BuildComCenter methods at random
-		[_pos, _dir, zagor_arr_ComCenStaticWeapons, zagor_arr_ComCenParkedVehicles] call 
+		private _initVehicles = [_pos, _dir, zagor_arr_ComCenStaticWeapons, zagor_arr_ComCenParkedVehicles] call 
 			selectRandom [
 				zagor_fnc_BuildComCenter// TODO, 
 				//zagor_fnc_BuildComCenter2,
@@ -51,6 +52,7 @@ private _instanceNo = 0;
 				//zagor_fnc_BuildComCenter5
 			];
 
+		_vehicles = _vehicles + _initVehicles;
 		Zagor_Var_ClearedPositions pushBack _pos;
 		[format ["drn_CommunicationCenterMapMarker%1", _instanceNo], _pos, "b_hq"] call Zagor_fnc_createLocationMarker; // o_hq
 
@@ -72,3 +74,4 @@ private _instanceNo = 0;
 zagor_var_Escape_communicationCenterPositions = _comCenPositions;
 publicVariable "zagor_var_Escape_communicationCenterPositions";
 
+_vehicles

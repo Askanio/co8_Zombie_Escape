@@ -39,6 +39,10 @@ zagor_arr_PrisonBackpackWeapons pushback ["hgun_Rook40_snds_F","30Rnd_9x21_Mag"]
 zagor_arr_PrisonBackpackWeapons pushback ["hgun_Pistol_01_F","10Rnd_9x21_Mag"];
 zagor_arr_PrisonBackpackWeapons pushback ["SMG_05_F", "30Rnd_9x21_Mag_SMG_02"];
 
+
+zagor_var_Escape_rad_protect_mask = "H_PilotHelmetFighter_B"; 
+zagor_var_Escape_rad_detector = "MineDetector"; 
+
 zagor_arr_Escape_SmallMedical = [
 	"FirstAidKit"
 	,"RyanZombiesAntiVirusTemporary_Item"
@@ -477,16 +481,16 @@ zagor_arr_ComCenStaticWeapons = [
 	,"B_GMG_01_high_F"];
 // A communication center have two parked and empty vehicles of the following possible types.
 zagor_arr_ComCenParkedVehicles = [
-	"I_G_Offroad_01_repair_F"
-	,"B_T_Truck_01_fuel_F"
-	,"B_T_Truck_01_medical_F"
+//	"I_G_Offroad_01_repair_F"
+//	,"B_T_Truck_01_fuel_F"
+	"B_T_Truck_01_medical_F"
 	,"B_T_Truck_01_covered_F"
 	,"B_T_Truck_01_transport_F"
 	,"B_T_MRAP_01_F"
 	,"B_T_MRAP_01_gmg_F"
 	,"B_T_MRAP_01_hmg_F"
-	,"B_T_Truck_01_ammo_F"
-	,"B_T_Truck_01_Repair_F"
+//	,"B_T_Truck_01_ammo_F"
+//	,"B_T_Truck_01_Repair_F"
 	,"B_T_LSV_01_AT_F"
 	,"B_T_LSV_01_armed_F"
 //	,"I_MRAP_03_hmg_F"

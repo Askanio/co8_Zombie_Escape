@@ -1,14 +1,16 @@
 if (!isServer) exitWith {};
 
+params["_initVehicles"];
+
 waitUntil {time > 0};
 sleep 1;
 
-private["_vehicleTypes", "_players", "_meters", "_vehicle", "_pos", "_maxSize", "_square"]; //, "_backpack","_pistols","_magazin"];
-private["_distShow", "_distHide","_activeVillages","_currentVillageId","_countVillages","_divider"];
-_distShow = 1500;
-_distHide = 1700;
-_currentVillageId = 0;
-_activeVillages = [];
+private["_vehicleTypes", "_players", "_meters", "_vehicle", "_pos", "_maxSize", "_square"];
+private["_countVillages","_divider"];
+private _distShow = 1500;
+private _distHide = 1700;
+private _currentVillageId = 0;
+private _activeVillages = [];
 
 _vehicleTypes = zagor_arr_Escape_EnemyCivilianCarTypes;
 //_backpack = ["B_AssaultPack_Base","B_Bergen_Base","B_FieldPack_Base","B_Carryall_Base"];
@@ -17,6 +19,7 @@ _vehicleTypes = zagor_arr_Escape_EnemyCivilianCarTypes;
 
 //waitUntil { !isNil "BIS_fnc_init" };
 private _vehicles = [];
+_vehicles = _vehicles + _initVehicles;	
 
 //waitUntil { ((count Zagor_VAR_Villages) - 1) <= 0 };
 _countVillages = (count Zagor_VAR_Villages) - 1;
@@ -187,6 +190,7 @@ while {true} do {
 								if (random 100 < 5) then {_vehicle addWeaponCargoGlobal [(_weapon select 0), 1];};
 								if (random 10 < 3) then {_vehicle addMagazineCargoGlobal [(_weapon select 1), floor(random 2) + 1];};
 								//_vehicle setHit ["motor", 1];
+								_vehicle setHit ["motor", random 1];
 								
 								if (random 1 > 0.4) then {_vehicle setHit [getText(configFile >> "cfgVehicles" >> (TypeOf _vehicle) >> "HitPoints" >> "HitLFWheel" >> "name"),(random 0.2) + 0.8]};
 								if (random 1 > 0.4) then {_vehicle setHit [getText(configFile >> "cfgVehicles" >> (TypeOf _vehicle) >> "HitPoints" >> "HitLBWheel" >> "name"),1]};
@@ -196,7 +200,7 @@ while {true} do {
 								if (random 1 > 0.5) then {_vehicle setHit [getText(configFile >> "cfgVehicles" >> (TypeOf _vehicle) >> "HitPoints" >> "HitGlass2" >> "name"),(random 0.6) + 0.3]};
 								if (random 1 > 0.3) then {_vehicle setHit [getText(configFile >> "cfgVehicles" >> (TypeOf _vehicle) >> "HitPoints" >> "HitGlass3" >> "name"),(random 0.6) + 0.3]};
 								if (random 1 > 0.5) then {_vehicle setHit [getText(configFile >> "cfgVehicles" >> (TypeOf _vehicle) >> "HitPoints" >> "HitGlass4" >> "name"),(random 0.6) + 0.3]};
-								_vehicle setHit [getText(configFile >> "cfgVehicles" >> (TypeOf _vehicle) >> "HitPoints" >> "engine"),random 1]; // HitEngine
+								//_vehicle setHit [getText(configFile >> "cfgVehicles" >> (TypeOf _vehicle) >> "HitPoints" >> "engine"),random 1]; // HitEngine
 								_vehicle setHit [getText(configFile >> "cfgVehicles" >> (TypeOf _vehicle) >> "HitPoints" >> "HitHull" >> "name"),(random 0.2) + 0.6];
 								_vehicle setHit [getText(configFile >> "cfgVehicles" >> (TypeOf _vehicle) >> "HitPoints" >> "HitBody" >> "name"),(random 0.2) + 0.6];
 								_vehicles = _vehicles + [_vehicle];	

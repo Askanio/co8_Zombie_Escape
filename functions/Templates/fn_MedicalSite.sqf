@@ -12,6 +12,7 @@ _number = Zagor_MedicalMarkerNumber;
 private _rotateDir = floor(random 359);
 
 private _objects = [];
+private _vehicles = [];
 
 private["_dir", "_pos", "_obj"];
 
@@ -376,7 +377,7 @@ private ["_weapons", "_weaponMagazines", "_box", "_weaponCount", "_car"];
 		_pos = [3.906975, -2.676192];
 		_dir = deg 0.000000;
 		_obj = [_car, _pos, _dir, _centerPos, _rotateDir] call Zagor_fnc_CreateTempleteVehicle;
-		_objects pushBack _obj;
+		_vehicles pushBack _obj;
 		
 		[_obj] call Zagor_fnc_AdjustVehicle;
 		
@@ -392,3 +393,5 @@ Zagor_VAR_SitesPointObjects set [_id, _objects];
 [_id, _centerPos] call Zagor_fnc_CreateSiteTrigger;
 
 ["Zagor_MedicalSiteMapMarker" + str _number,_centerPos,"b_med"] call Zagor_fnc_createLocationMarker; // o_med
+
+_vehicles

@@ -2,6 +2,7 @@ if(!isserver) exitwith {};
 
 private ["_positions", "_i", "_j", "_tooCloseAnotherPos", "_pos", "_countNW", "_countNE", "_countSE", "_countSW", "_isOk","_regionCount"];
 
+private _vehicles = [];
 _positions = [];
 _i = 0;
 
@@ -85,7 +86,7 @@ while {count _positions < Zagor_MedicalSiteCount} do {
 
 {
 //[_x, zagor_arr_Escape_AmmoDepot_StaticWeaponClasses, zagor_arr_Escape_AmmoDepot_ParkedVehicleClasses] call
-    [_x] call 
+    private _initVehicles = [_x] call 
         selectRandom [
             Zagor_fnc_MedicalSite//,
             //A3E_fnc_AmmoDepot2,
@@ -93,8 +94,11 @@ while {count _positions < Zagor_MedicalSiteCount} do {
             //A3E_fnc_AmmoDepot4,
             //A3E_fnc_AmmoDepot5
         ];
+	_vehicles = _vehicles + _initVehicles;
 	Zagor_VAR_SitesPoint pushBack [2, _x, objNull];
 } foreach _positions;
 
 Zagor_VAR_Escape_MedicalSitePositions = _positions;
 publicVariable "Zagor_VAR_Escape_MedicalSitePositions";
+
+_vehicles
