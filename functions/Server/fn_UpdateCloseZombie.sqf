@@ -1,7 +1,7 @@
 if (!isServer) exitWith {};
 
 waitUntil {time > 0 && Zagor_VAR_SmallMedicalSitesCreated && Zagor_VAR_MedicalSitesCreated};
-sleep 30;
+sleep 120;
 
 private _distShow = 500;
 private _distHide = 600;
@@ -98,5 +98,5 @@ while {true} do {
 	};
 	diag_log format["Close Zombies: '%1'", count _zombies];
 
-	sleep 20;
+	sleep 40;
 };

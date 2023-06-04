@@ -67,7 +67,12 @@ if (_ok == true) then {
 	_vehicle setFuel 0;
 	_vehicle setHit ["motor", 1];
 	
-	[_vehicle,((random 40) + 60), ((random 0.02) + 0.02), zagor_var_Escape_rad_protect_mask, zagor_var_Escape_rad_detector] call Zagor_fnc_CreateRadioactiveZone;
+	//[_vehicle,((random 40) + 60), ((random 0.02) + 0.02), zagor_var_Escape_rad_protect_mask, zagor_var_Escape_rad_detector] call Zagor_fnc_CreateRadioactiveObject;
+	[_vehicle,((random 40) + 60), ((random 0.02) + 0.02), zagor_var_Escape_rad_protect_mask, zagor_var_Escape_rad_detector,false,10,true] execvm "Scripts\AL_radiation\radioactive_object.sqf";
+	
+	[format ["drn_AccidentRadioactiveMarker%1", 1], _pos, "KIA", "ColorRed", true] call Zagor_fnc_createLocationMarker;
+	
+	[position _vehicle] remoteExec ["Zagor_fnc_CreateRadioactiveFog", 0, true];
 	
 	diag_log format["Radioactive accident point: '%1'", _pos];
 } else {

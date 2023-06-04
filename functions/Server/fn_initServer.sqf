@@ -295,6 +295,7 @@ _vehicles = _vehicles + _initVehicles;
 [] spawn Zagor_fnc_UpdateSitesZombie;
 [] spawn Zagor_fnc_UpdateCloseZombie;
 [] spawn Zagor_fnc_CreateRadioactiveAccident;
+[] spawn Zagor_fnc_CreateRadioactiveCity;
 
 // TODO: add 2 heli (2 and 3 position)
 [_startHeli, _startHeli, _startHeli] spawn Zagor_fnc_CheckEscape;
@@ -305,7 +306,9 @@ _vehicles = _vehicles + _initVehicles;
 private _posXY = Zagor_StartPos vectoradd [100, 100];
 [_posXY,25] call Zagor_fnc_cleanupTerrain;
 private _box = createVehicle ["B_T_Truck_01_fuel_F", _posXY, [], 0, "CAN_COLLIDE"];
-[_box,30,0.1,"H_PilotHelmetFighter_B","MineDetector"] call Zagor_fnc_CreateRadioactiveZone;
+//[_box,30,0.1,"H_PilotHelmetFighter_B","MineDetector"] call Zagor_fnc_CreateRadioactiveObject;
+//[_box] call Zagor_fnc_CreateRadioactiveFog;
+[position _box] remoteExec ["Zagor_fnc_CreateRadioactiveFog", 0, true];
 
 private _posXY = Zagor_StartPos vectoradd [100, 0];
 [_posXY,25] call Zagor_fnc_cleanupTerrain;

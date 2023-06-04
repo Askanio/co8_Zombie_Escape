@@ -108,8 +108,9 @@ class CfgFunctions
 //            class createMotorPools {};
 //            class createAmmoDepots {};
 			class createMedicalSites {};
-			class CreateRadioactiveZone {};
+			class CreateRadioactiveFog {};
 			class CreateRadioactiveAccident {};
+			class CreateRadioactiveCity {};
 			class createSmallMedicalSite {};
 			class createLocationMarker {};
 			class UpdateLocationMarker {};
