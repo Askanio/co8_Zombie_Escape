@@ -18,3 +18,11 @@ fn_intServer (209)
 Review 
 Scripts\Escape\Functions.sqf
 
+
+Add to RadioactiveCities military car with ammo
+
+Add military car with small ammo on road (2-3 qt)
+
+Add dead people with H_PilotHelmetFighter_B
+
+Add big group zombies run by line

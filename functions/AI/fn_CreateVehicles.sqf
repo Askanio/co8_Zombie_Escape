@@ -180,7 +180,8 @@ while {true} do {
 								if (random 100 < 5) then {_vehicle addItemCargoGlobal ["ItemRadio", 1];};							
 								if (random 100 < 5) then {_vehicle addItemCargoGlobal ["acc_flashlight", 1];};	
 								if (random 10 < 3) then {_vehicle addItemCargoGlobal ["FirstAidKit", 1];};
-								if (random 100 < 5) then {_vehicle addBackpackCargoGlobal [selectRandom zagor_arr_Escape_Backpack, 1];};								
+								if (random 100 < 5) then {_vehicle addBackpackCargoGlobal [selectRandom zagor_arr_Escape_Backpack, 1];};
+								if (random 100 < 3) then {_vehicle addBackpackCargoGlobal [selectRandom zagor_arr_Escape_BodyArmor, 1];};								
 								if(Zagor_Param_UseIntel == 1) then {
 									[_vehicle] call Zagor_fnc_AddIntelToVehicle;
 								};

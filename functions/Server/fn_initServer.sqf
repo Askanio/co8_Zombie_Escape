@@ -31,13 +31,14 @@ publicVariable "Zagor_Debug";
 //ACE Revive
 /*
 AT_Revive_Camera = Zagor_Param_ReviveView; //Needs to be stored on server now
+*/
 ACE_MedicalServer = false;
 if (isClass(configFile >> "CfgPatches" >> "ACE_Medical")) then {
 	ACE_MedicalServer = true;
 	["ace_unconscious", {params["_unit", "_isDown"]; [_unit,_isDown] spawn ACE_fnc_HandleUnconscious;}] call CBA_fnc_addEventHandler;
 };
 publicVariable "ACE_MedicalServer";
-*/
+
 
 
 //Load Statistics
@@ -297,8 +298,10 @@ _vehicles = _vehicles + _initVehicles;
 [] spawn Zagor_fnc_CreateRadioactiveAccident;
 [] spawn Zagor_fnc_CreateRadioactiveCity;
 
-// TODO: add 2 heli (2 and 3 position)
-[_startHeli, _startHeli, _startHeli] spawn Zagor_fnc_CheckEscape;
+private _startHeli2 = [] call Zagor_fnc_CreateSaveHeli2;
+private _startHeli3 = [] call Zagor_fnc_CreateSaveHeli3;
+
+[_startHeli, _startHeli2, _startHeli3] spawn Zagor_fnc_CheckEscape;
 
 
 // TEST

@@ -111,23 +111,17 @@ zagor_arr_Escape_Zombie_Soldier = [
 ];
 
 zagor_arr_Escape_BodyArmor = [
-"V_Rangemaster_belt"
-,"V_BandollierB_khk"
-,"V_BandollierB_rgr"
-,"V_BandollierB_cbr"
-,"V_PlateCarrier1_rgr"
-,"V_PlateCarrier1_cbr"
-,"V_PlateCarrier2_rgr"
-,"V_PlateCarrierGL_rgr"
-,"V_Chestrig_khk"
-,"V_ChestrigB_rgr"
-,"V_TacVest_khk"
-,"V_TacVest_brn"
-,"V_TacVest_oli"
-,"V_HarnessO_brn"
-,"V_HarnessOGL_brn"
-,"V_RebreatherB"
-,"V_RebreatherIR"
+"Vest_V_Rangemaster_belt"
+//,"V_BandollierB_khk"
+//,"V_BandollierB_rgr"
+//,"V_BandollierB_cbr"
+,"Vest_V_PlateCarrier1_rgr"
+,"Vest_V_PlateCarrier2_rgr"
+//,"Vest_V_PlateCarrierGL_rgr"
+,"Vest_V_TacVest_khk"
+,"Vest_V_TacVest_brn"
+,"Vest_V_TacVest_oli"
+,"Vest_V_HarnessO_brn"
 ];
 
 // Random array. Civilian vehicle classes for ambient traffic.

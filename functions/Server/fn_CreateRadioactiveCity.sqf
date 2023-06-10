@@ -17,12 +17,12 @@ while { _ok == false && _count < 10 } do {
 		[_pos, 400, 4561, []] call BIS_fnc_destroyCity;
 		
 		private _vehicle = createVehicle ["Land_MetalBarrel_F", _pos, [], 0, "CAN_COLLIDE"];
-		//[_vehicle, 400, ((random 0.01) + 0.01), zagor_var_Escape_rad_protect_mask, zagor_var_Escape_rad_detector] call Zagor_fnc_CreateRadioactiveObject;
-		[_vehicle, 400, ((random 0.01) + 0.01), zagor_var_Escape_rad_protect_mask, zagor_var_Escape_rad_detector,false,10,true] execvm "Scripts\AL_radiation\radioactive_object.sqf";
+
+		[_vehicle, 200, ((random 0.01) + 0.01), zagor_var_Escape_rad_protect_mask, zagor_var_Escape_rad_detector,false,10,true] execvm "Scripts\AL_radiation\radioactive_object.sqf";
 	
 		[format ["drn_RadioactiveCity%1", _currentRadioactiveCityCount], _pos, "KIA", "ColorRed", true] call Zagor_fnc_createLocationMarker;
 		
-		[position _vehicle] remoteExec ["Zagor_fnc_CreateRadioactiveFog", 0, true];
+		[_vehicle] remoteExec ["Zagor_fnc_CreateRadioactiveFog", 0, true];
 		
 		if (_currentRadioactiveCityCount == Zagor_RadioactiveCityCount) then { _ok = true; };
 		

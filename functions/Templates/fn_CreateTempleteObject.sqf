@@ -11,6 +11,8 @@
     _realDir = _relativeDir + _rotateDir;
     _object = createVehicle [_className, _realPos, [], 0, "CAN_COLLIDE"]; // "NONE" "CAN_COLLIDE"
 	//_object setPos _realPos;
+	_object setPosATL _realPos;
+	_object setVectorUp surfaceNormal _realPos;
     _object setDir _realDir;
     _object
 	

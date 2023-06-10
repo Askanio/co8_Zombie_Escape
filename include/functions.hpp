@@ -105,6 +105,8 @@ class CfgFunctions
 //			class watchKnownPosition {};
 			class parameterInit {}; 
             class createComCenters {};
+			class CreateSaveHeli2 {};
+			class CreateSaveHeli3 {};
 //            class createMotorPools {};
 //            class createAmmoDepots {};
 			class createMedicalSites {};

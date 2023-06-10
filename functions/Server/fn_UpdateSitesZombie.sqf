@@ -92,9 +92,11 @@ while {true} do {
 					private _zombieTypes = [];
 					switch _siteType do
 					{
-						case 1: { _maxCountZombie = 10; _additionalZombies = 2; _maxSize = 100; _zombieTypes = ["Opfor","mediumOpfor","slowOpfor","walkerOpfor"] };
-						case 2: { _maxCountZombie = 20; _additionalZombies = 3; _maxSize = 100; _zombieTypes = ["Opfor","mediumOpfor","mediumOpfor","slowOpfor","walkerOpfor"] };
-						case 2: { _maxCountZombie = 30; _additionalZombies = 4; _maxSize = 150; _zombieTypes = ["Opfor","Opfor","mediumOpfor","walkerOpfor"] };
+						case 1: { _maxCountZombie = 10; _additionalZombies = 2; _maxSize = 100; _zombieTypes = ["Opfor","mediumOpfor","slowOpfor","walkerOpfor"] }; // small medical point
+						case 2: { _maxCountZombie = 20; _additionalZombies = 3; _maxSize = 100; _zombieTypes = ["Opfor","mediumOpfor","mediumOpfor","slowOpfor","walkerOpfor"] }; // medical point
+						case 4: { _maxCountZombie = 30; _additionalZombies = 4; _maxSize = 150; _zombieTypes = ["Opfor","Opfor","mediumOpfor","walkerOpfor"] }; // medical center
+						case 5: { _maxCountZombie = 5; _additionalZombies = 3; _maxSize = 150; _zombieTypes = ["Opfor","mediumOpfor","mediumOpfor","slowOpfor","walkerOpfor"] }; // save heli 2
+						case 6: { _maxCountZombie = 30; _additionalZombies = 3; _maxSize = 150; _zombieTypes = [] }; // save heli 3
 						default { _maxCountZombie = 50; _additionalZombies = 5; _maxSize = 150; _zombieTypes = ["Opfor","Opfor","mediumOpfor"] };
 					};
 				
@@ -118,10 +120,10 @@ while {true} do {
 						for "_ii" from 0 to _needGenerateZombie - 1 step 1 do {
 							private["_newZombie"];
 							private _blah = floor(random 2);//returns 0 or 1
-							if (_blah == 0) then {
+							if (_blah == 0 && (count _zombieTypes) > 0 ) then {
 								_newZombie = "RyanZombie" + str (floor(random 17) + 15) + selectRandom _zombieTypes;
 							};
-							if (_blah == 1) then {
+							if (_blah == 1 || (count _zombieTypes) == 0) then {
 								_newZombie = selectRandom zagor_arr_Escape_Zombie_Soldier;
 							};
 

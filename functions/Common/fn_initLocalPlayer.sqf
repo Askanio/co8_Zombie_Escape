@@ -103,7 +103,7 @@ player addEventHandler["Respawn", {
 }];
 
 
-/*
+/**/
 [] spawn {
 	waituntil{sleep 0.5;!isNil("Zagor_EscapeHasStarted")};
 
@@ -111,7 +111,7 @@ player addEventHandler["Respawn", {
 	if ((isClass(configFile >> "CfgPatches" >> "ACE_Medical")) && !(ACE_MedicalServer)) then {systemChat "Player is running ACE on unsupported server! Please deactivate or gameplay could be servilely affected.";};
 	if (!(isClass(configFile >> "CfgPatches" >> "ACE_Medical")) && (ACE_MedicalServer)) then {systemChat "Server is running ACE! Please install the compatible version and reconnect to prevent gamebreaking issues.";};
 };
-*/
+
 
 
 //[] spawn {
